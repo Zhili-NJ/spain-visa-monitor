@@ -72,6 +72,8 @@ class Visa(Basic):
             nd = self.get_normal_dates()
             if nd:
                 available_dates.update(nd)
+                #self.click_el(name="app_time")
+
             if self.driver.find_elements_by_xpath(next_button_xpath):
                 self.wait_for_secs(0)
                 self.click_el(xpath=next_button_xpath)
