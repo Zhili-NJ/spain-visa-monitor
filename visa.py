@@ -72,7 +72,16 @@ class Visa(Basic):
             nd = self.get_normal_dates()
             if nd:
                 available_dates.update(nd)
-                #self.click_el(name="app_time")
+                self.click_el(name="app_time")
+                self.click_el(xpath="//select[@id='app_time']/option[contains(text(),'09:45 - 10:00')]")
+                #self.click_el(xpath="//select[@id='app_time']/option[contains(text(),'10:45 - 11:00')]")
+                #self.click_el(xpath="//select[@id='app_time']/option[contains(text(),'11:45 - 12:00')]")
+                # the time slots aren't tried with a loop, considering the competitiveness of the visa selection with other scripts.
+                # it is suggest to use multiple scripts with staggered the refresh time, and app_time.
+                self.click_el(name="bookDate")
+                
+                #should stop the script somewhere after succeed booking. Or close the page whenever after check the date.
+                #Otherwise excessive page will be kept opened. (control + c to stop this script)
 
             if self.driver.find_elements_by_xpath(next_button_xpath):
                 self.wait_for_secs(0)
